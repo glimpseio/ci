@@ -74,7 +74,6 @@ jobs:
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test iPhoneOS
-        if: false
         run: |
           xcodebuild test \
             -scheme "${{ matrix.repo }}App" \
@@ -85,7 +84,6 @@ jobs:
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test iPadOS
-        if: false
         run: |
           xcodebuild test \
             -scheme "${{ matrix.repo }}App" \
