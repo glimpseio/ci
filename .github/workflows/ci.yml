@@ -36,17 +36,16 @@ jobs:
           #path: ${{ matrix.repo }}
           token: ${{ secrets.CI_ACCESS_TOKEN }}
 
-      - name: Test Werk
+      - name: Test Framework
         run: |
           xcodebuild test \
             -scheme "${{ matrix.repo }}Werk" \
             -configuration Debug \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Test watchOS
-        if: false
+      - name: Build watchOS
         run: |
-          xcodebuild test \
+          xcodebuild build \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "watchsimulator7.2" \
@@ -54,10 +53,9 @@ jobs:
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Test tvOS
-        if: false
+      - name: Build tvOS
         run: |
-          xcodebuild test \
+          xcodebuild build \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "appletvsimulator14.3" \
@@ -73,9 +71,9 @@ jobs:
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Test iPhoneOS
+      - name: Build iPhoneOS
         run: |
-          xcodebuild test \
+          xcodebuild build \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "iphonesimulator14.4" \
@@ -83,16 +81,13 @@ jobs:
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Test iPadOS
+      - name: Build iPadOS
         run: |
-          xcodebuild test \
+          xcodebuild build \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "iphonesimulator14.4" \
             -destination "OS=14.4,name=iPhone 12 Mini" \
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
-
-
-
 
