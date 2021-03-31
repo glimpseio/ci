@@ -32,8 +32,8 @@ jobs:
         with:
           ref: main
           path: ${{ matrix.repo }}
-          #token: ${{ env.CI_ACCESS_TOKEN }}
-          token: ${{ github.token }}
+          token: ${{ env.CI_ACCESS_TOKEN }}
+          #token: ${{ github.token }}
           repository: glimpseio/${{ matrix.repo }}
 
       - name: Test Werk
