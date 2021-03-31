@@ -43,9 +43,10 @@ jobs:
             -configuration Debug \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Build watchOS
+      - name: Test watchOS
+        if: false
         run: |
-          xcodebuild build \
+          xcodebuild test \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "watchsimulator7.2" \
@@ -53,9 +54,10 @@ jobs:
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Build tvOS
+      - name: Test tvOS
+        if: false
         run: |
-          xcodebuild build \
+          xcodebuild test \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "appletvsimulator14.3" \
@@ -71,9 +73,10 @@ jobs:
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Build iPhoneOS
+      - name: Test iPhoneOS
+        if: false
         run: |
-          xcodebuild build \
+          xcodebuild test \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "iphonesimulator14.4" \
@@ -81,9 +84,10 @@ jobs:
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Build iPadOS
+      - name: Test iPadOS
+        if: false
         run: |
-          xcodebuild build \
+          xcodebuild test \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "iphonesimulator14.4" \
