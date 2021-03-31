@@ -55,6 +55,7 @@ jobs:
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test tvOS
+        if: false
         run: |
           xcodebuild test \
             -scheme "${{ matrix.repo }}App" \
