@@ -48,6 +48,7 @@ jobs:
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
+
       - name: Build watchOS
         run: |
           xcodebuild build \
