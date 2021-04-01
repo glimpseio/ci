@@ -33,7 +33,7 @@ jobs:
           ref: main
           fetch-depth: 0
           submodules: recursive
-          repository: glimpseio/APIClients
+          repository: glimpseio/InformaTiq
           token: ${{ secrets.CI_ACCESS_TOKEN }}
 
       - name: Show Simulators
@@ -60,7 +60,6 @@ jobs:
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test tvOS
-        if: false
         run: |
           xcodebuild test \
             -scheme "${{ matrix.repo }}App" \
