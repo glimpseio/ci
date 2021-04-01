@@ -37,6 +37,10 @@ jobs:
           #path: ${{ matrix.repo }}
           token: ${{ secrets.CI_ACCESS_TOKEN }}
 
+      - name: Show Simulators
+        run: |
+          xcrun simctl list
+
       - name: Test Framework
         run: |
           xcodebuild test \
