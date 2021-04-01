@@ -46,6 +46,7 @@ jobs:
           xcodebuild test \
             -scheme "${{ matrix.repo }}Werk" \
             -configuration Debug \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test watchOS
