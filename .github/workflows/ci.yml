@@ -32,8 +32,7 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-          repository: glimpseio/${{ matrix.repo }}
-          #path: ${{ matrix.repo }}
+          repository: glimpseio/APIClients
           token: ${{ secrets.CI_ACCESS_TOKEN }}
 
       - name: Show Simulators
