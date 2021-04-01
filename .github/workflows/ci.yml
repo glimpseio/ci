@@ -32,6 +32,7 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+          submodules: recursive
           repository: glimpseio/APIClients
           token: ${{ secrets.CI_ACCESS_TOKEN }}
 
