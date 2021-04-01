@@ -1,5 +1,5 @@
 name: CI
-  
+
 on:
   push:
     branches: [ main ]
@@ -36,9 +36,9 @@ jobs:
           repository: glimpseio/InformaTiq
           token: ${{ secrets.CI_ACCESS_TOKEN }}
 
-      - name: Show Simulators
-        run: |
-          xcrun simctl list
+      #- name: Show Simulators
+      #  run: |
+      #  xcrun simctl list
 
       - name: Test Framework
         run: |
@@ -48,9 +48,9 @@ jobs:
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Test watchOS
+      - name: Build watchOS
         run: |
-          xcodebuild test \
+          xcodebuild build \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "watchsimulator7.2" \
