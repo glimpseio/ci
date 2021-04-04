@@ -15,7 +15,8 @@ jobs:
   test-job:
     name: CI
     runs-on: macos-11.0
-    timeout-minutes: 60
+    timeout-minutes: 90
+    environment: Signing
 
     strategy:
       matrix:
