@@ -49,6 +49,15 @@ jobs:
       #  run: |
       #  xcrun simctl list
 
+      - name: Test iPhoneOS
+        run: |
+          xcodebuild test \
+            -scheme "${{ matrix.repo }}App" \
+            -configuration Release \
+            -sdk "iphonesimulator14.4" \
+            -destination "OS=14.4,name=iPhone 12 Mini" \
+            | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
+
       - name: Test Framework
         run: |
           xcodebuild test \
@@ -79,15 +88,6 @@ jobs:
           xcodebuild test \
             -scheme "${{ matrix.repo }}Mac" \
             -configuration Release \
-            | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
-
-      - name: Test iPhoneOS
-        run: |
-          xcodebuild test \
-            -scheme "${{ matrix.repo }}App" \
-            -configuration Release \
-            -sdk "iphonesimulator14.4" \
-            -destination "OS=14.4,name=iPhone 12 Mini" \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test iPadOS
