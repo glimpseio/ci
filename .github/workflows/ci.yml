@@ -22,6 +22,7 @@ jobs:
       matrix:
         repo: [Av8]
 
+
     steps:
       - name: Cancel Previous Runs
         uses: styfle/cancel-workflow-action@0.8.0
@@ -53,6 +54,7 @@ jobs:
           xcodebuild test \
             -scheme "${{ matrix.repo }}Werk" \
             -configuration Debug \
+            -allowProvisioningUpdates \
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
