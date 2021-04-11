@@ -57,15 +57,15 @@ jobs:
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Build watchOS
-        run: |
-          xcodebuild build \
-            -scheme "${{ matrix.repo }}App" \
-            -configuration Release \
-            -sdk "watchsimulator7.2" \
-            -destination "OS=7.2,name=Apple Watch Series 6 - 44mm" \
-            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
-            | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
+      #- name: Build watchOS
+        #run: |
+        #  xcodebuild build \
+        #    -scheme "${{ matrix.repo }}App" \
+        #    -configuration Release \
+        #    -sdk "watchsimulator7.2" \
+        #    -destination "OS=7.2,name=Apple Watch Series 6 - 44mm" \
+        #    ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
+        #    | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test tvOS
         run: |
