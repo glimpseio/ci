@@ -54,7 +54,7 @@ jobs:
           xcodebuild build \
             -scheme "${{ matrix.repo }}Werk" \
             -configuration Debug \
-            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       #- name: Build watchOS
@@ -64,7 +64,7 @@ jobs:
         #    -configuration Release \
         #    -sdk "watchsimulator7.2" \
         #    -destination "OS=7.2,name=Apple Watch Series 6 - 44mm" \
-        #    ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
+        #    ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
         #    | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       #- name: Test tvOS
@@ -74,7 +74,7 @@ jobs:
         #    -configuration Release \
         #    -sdk "appletvsimulator14.3" \
         #    -destination "OS=14.3,name=Apple TV" \
-        #    ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
+        #    ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
         #    | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test macOS
@@ -83,7 +83,7 @@ jobs:
             -allowProvisioningUpdates \
             -scheme "${{ matrix.repo }}Mac" \
             -configuration Release \
-            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test iPhoneOS
@@ -93,7 +93,7 @@ jobs:
             -configuration Release \
             -sdk "iphonesimulator14.4" \
             -destination "OS=14.4,name=iPhone 12 Mini" \
-            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test iPadOS
@@ -103,7 +103,7 @@ jobs:
             -configuration Release \
             -sdk "iphonesimulator14.4" \
             -destination "OS=14.4,name=iPhone 12 Mini" \
-            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
 
