@@ -49,20 +49,12 @@ jobs:
       #  run: |
       #  xcrun simctl list
 
-      - name: Test iPhoneOS
-        run: |
-          xcodebuild test \
-            -scheme "${{ matrix.repo }}App" \
-            -configuration Release \
-            -sdk "iphonesimulator14.4" \
-            -destination "OS=14.4,name=iPhone 12 Mini" \
-            | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
-
       - name: Test Framework
         run: |
-          xcodebuild test \
+          xcodebuild build \
             -scheme "${{ matrix.repo }}Werk" \
             -configuration Debug \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Build watchOS
@@ -72,31 +64,45 @@ jobs:
             -configuration Release \
             -sdk "watchsimulator7.2" \
             -destination "OS=7.2,name=Apple Watch Series 6 - 44mm" \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test tvOS
         run: |
-          xcodebuild test \
+          xcodebuild build \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "appletvsimulator14.3" \
             -destination "OS=14.3,name=Apple TV" \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
       - name: Test macOS
         run: |
-          xcodebuild test \
+          xcodebuild build \
             -scheme "${{ matrix.repo }}Mac" \
             -configuration Release \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
-      - name: Test iPadOS
+      - name: Test iPhoneOS
         run: |
-          xcodebuild test \
+          xcodebuild build \
             -scheme "${{ matrix.repo }}App" \
             -configuration Release \
             -sdk "iphonesimulator14.4" \
             -destination "OS=14.4,name=iPhone 12 Mini" \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
+            | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
+
+      - name: Test iPadOS
+        run: |
+          xcodebuild build \
+            -scheme "${{ matrix.repo }}App" \
+            -configuration Release \
+            -sdk "iphonesimulator14.4" \
+            -destination "OS=14.4,name=iPhone 12 Mini" \
+            ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=YES \
             | xcpretty --report html --screenshots && exit ${PIPESTATUS[0]}
 
 
