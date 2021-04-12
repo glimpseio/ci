@@ -80,7 +80,6 @@ jobs:
       - name: Test macOS
         run: |
           xcodebuild build \
-            -allowProvisioningUpdates \
             -scheme "${{ matrix.repo }}Mac" \
             -configuration Release \
             ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO \
